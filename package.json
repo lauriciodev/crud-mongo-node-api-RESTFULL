@@ -1,0 +1,19 @@
+{
+  "name": "crud-mongo-node-api-restfull",
+  "version": "1.0.0",
+  "description": "crud usando mongodb api-restfull",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lauriciodev/crud-mongo-node-api-RESTFULL.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lauriciodev/crud-mongo-node-api-RESTFULL/issues"
+  },
+  "homepage": "https://github.com/lauriciodev/crud-mongo-node-api-RESTFULL#readme"
+}
