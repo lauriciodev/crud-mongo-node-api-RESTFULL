@@ -7,12 +7,27 @@ const app = express();
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
-
-
 //rota inicial 
+app.get("/",(req,res) =>{
+  res.json({msg:"seja bem vindo"});
+});
+
+
+//conectando ao mongo
+mongoose.set("strictQuery","false");
+mongoose.connect("mongodb://localhost:27017/manager",{
+  useNewUrlParser:true,
+  useUnifiedTopology:true
+}).then(() =>{
+  console.log("banco de dado conectado com sucesso");
+}).catch((erro) => {
+  console.log(erro)
+})
+
+
 
 //habilitando porta
-app.listen(3000,(erro) =>{
+app.listen(4000,(erro) =>{
   if(erro){
     console.log("erro ao execultar");
   }else{
