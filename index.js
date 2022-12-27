@@ -20,8 +20,7 @@ const person = {
   approved,
 };
 
-
-//create mnongoose;
+//create mongoose;
 
 try{
 await Person.create(person);
@@ -29,8 +28,23 @@ res.status(201).json({msg:"dado inserido com sucesso"})
 } catch(erro){
   res.status(500).json({erro:erro});
 }
+});
+
+//listando dados
+app.get("/person",async (req,res) =>{
+
+try{
+let result = await Person.find();
+res.status(200).json(result);
+}catch(erro){
+  res.status(400).json({erro:erro});
+}
+});
 
 
+//deletando dados 
+app.delete("/person", async(req,res) =>{
+  
 })
 
 
@@ -50,7 +64,9 @@ mongoose.connect("mongodb://localhost:27017/manager",{
   console.log("banco de dado conectado com sucesso");
 }).catch((erro) => {
   console.log(erro)
-})
+});
+
+
 
 
 
