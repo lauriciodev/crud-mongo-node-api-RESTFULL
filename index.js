@@ -1,11 +1,39 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const Person = require("./models/Person");
 
 const app = express();
 
 //forma de ler JSON / middlewares
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+
+//rotas api
+
+app.post("/person", async (req,res) =>{
+
+const {name,salary,approved} = req.body;
+
+const person = {
+  name,
+  salary,
+  approved,
+};
+
+
+//create mnongoose;
+
+try{
+await Person.create(person);
+res.status(201).json({msg:"dado inserido com sucesso"})
+} catch(erro){
+  res.status(500).json({erro:erro});
+}
+
+
+})
+
+
 
 //rota inicial 
 app.get("/",(req,res) =>{
