@@ -43,10 +43,42 @@ res.status(200).json(result);
 
 
 //deletando dados 
-app.delete("/person", async(req,res) =>{
-  
-})
+app.delete("/person/:id", async(req,res) =>{
+  let id = req.params.id;
+  try{
+    await Person.findByIdAndDelete({"_id":id});
+    res.status(200).json({msg:"usuario deletado com sucesso"});
+  }catch(erro){
+    res.status(404).json({msg:"erro ao deletar usuario"});
+  }
 
+});
+
+
+//atualizando dados
+
+app.put("/person/", async(req,res) =>{
+  let {id,name,salary,approved} = req.body;
+  let dataBanco = await Person.findById(id);
+  if(name == dataBanco.name){
+    name = dataBanco.name;
+  }
+  if(salary == dataBanco.salary){
+    salary = dataBanco.salary;
+  }
+  if(approved == dataBanco.approved){
+    approved = dataBanco.approved;
+  }
+  try{
+    await Person.findByIdAndUpdate(id,{name,salary,approved});
+    res.send("dados atualizados com sucesso");
+  }catch(erro){
+   console.log(erro);
+  }
+   
+
+
+})
 
 
 //rota inicial 
