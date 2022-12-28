@@ -13,6 +13,21 @@ app.use(express.json());
 app.post("/person", async (req,res) =>{
 
 const {name,salary,approved} = req.body;
+if(!name ){
+  res.status(400).json({msg:"name não pode ser vazio."})
+  return
+}
+if(!salary){
+  res.status(400).json({msg:"salary não pode ser vazio."})
+  return
+
+}
+if(!approved){
+  res.status(400).json({msg:"approved não pode ser vazio."})
+  return
+
+}
+
 
 const person = {
   name,
