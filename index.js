@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = require("./routes/routes");
 const app = express();
+const cors = require("cors");
+
+app.use(cors());
 
 //forma de ler JSON / middlewares
 app.use(express.urlencoded({extended:true}));
